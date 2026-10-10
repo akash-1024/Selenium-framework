@@ -1,0 +1,4 @@
+scenario,username,password,expectedError
+invalidLoginShowsError,invalid_user,wrong_pass,Username and password do not match
+lockedOutUserCannotLogin,locked_out_user,secret_sauce,"Sorry, this user has been locked out"
+validUserCanLogin,standard_user,secret_sauce,

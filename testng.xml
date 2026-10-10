@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Demo Web Automation Suite">
-    <test name="Selenium Demo Tests">
+    <listeners>
+        <listener class-name="com.demo.framework.reporting.ExtentTestListener"/>
+    </listeners>
+    <test name="Selenium Demo Tests" preserve-order="true">
         <classes>
-            <class name="com.demo.tests.DemoWebsiteTest"/>
+            <class name="com.demo.tests.SauceDemoTest"/>
         </classes>
     </test>
 </suite>
