@@ -155,9 +155,9 @@ public class SauceDemoActions {
         ExtentTestListener.logStep("Start checkout");
         logAlertAccepted(browser.clickAndAcceptAlert(SauceDemoLocators.CHECKOUT_BUTTON));
         ExtentTestListener.logStep("Enter delivery details");
-        browser.type(SauceDemoLocators.FIRST_NAME, firstName);
-        browser.type(SauceDemoLocators.LAST_NAME, lastName);
-        browser.type(SauceDemoLocators.POSTAL_CODE, postalCode);
+        logAlertAccepted(browser.typeAndAcceptAlert(SauceDemoLocators.FIRST_NAME, firstName));
+        logAlertAccepted(browser.typeAndAcceptAlert(SauceDemoLocators.LAST_NAME, lastName));
+        logAlertAccepted(browser.typeAndAcceptAlert(SauceDemoLocators.POSTAL_CODE, postalCode));
         ExtentTestListener.logStep("Continue to the order summary");
         logAlertAccepted(browser.clickAndAcceptAlert(SauceDemoLocators.CONTINUE_BUTTON));
         browser.waitUntilUrlContains("checkout-step-two.html");

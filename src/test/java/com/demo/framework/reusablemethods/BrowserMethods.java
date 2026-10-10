@@ -66,6 +66,28 @@ public class BrowserMethods {
         element.sendKeys(value);
     }
 
+    public boolean typeAndAcceptAlert(By locator, String value) {
+        boolean alertAccepted = acceptAlertIfPresent();
+        for (int attempt = 0; attempt < 5; attempt++) {
+            try {
+                type(locator, value);
+                if (value.equals(visible(locator).getAttribute("value"))) {
+                    return acceptAlertIfPresent() || alertAccepted;
+                }
+            } catch (UnhandledAlertException exception) {
+                alertAccepted = true;
+                acceptAlertIfPresent();
+            }
+
+            if (acceptAlertIfPresent()) {
+                alertAccepted = true;
+            } else if (attempt == 4) {
+                break;
+            }
+        }
+        throw new IllegalStateException("Could not enter text into a checkout field after handling browser alerts.");
+    }
+
     public String text(By locator) {
         return visible(locator).getText().trim();
     }
